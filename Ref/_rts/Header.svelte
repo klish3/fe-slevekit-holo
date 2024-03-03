@@ -2,13 +2,12 @@
 	import { page } from '$app/stores';
 	import logo from '$lib/images/svelte-logo.svg';
 	import github from '$lib/images/github.svg';
-	import holonLogo from '$lib/images/logo.png';
 </script>
 
 <header>
-	<div class="logo-corner">
+	<div class="corner">
 		<a href="https://kit.svelte.dev">
-			<img src={holonLogo} alt="SvelteKit" />
+			<img src={logo} alt="SvelteKit" />
 		</a>
 	</div>
 
@@ -20,37 +19,23 @@
 			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
 				<a href="/">Home</a>
 			</li>
-			<li aria-current={$page.url.pathname.startsWith('/business-analysis') ? 'page' : undefined}>
-				<a href="/business-analysis">Business Analysis</a>
-			</li>
-			<li
-				aria-current={$page.url.pathname.startsWith('/business-process-management')
-					? 'page'
-					: undefined}
-			>
-				<a href="/business-process-management">Business Process Management</a>
-			</li>
-			<li aria-current={$page.url.pathname.startsWith('/executive-coaching') ? 'page' : undefined}>
-				<a href="/executive-coaching">Executive Coaching</a>
-			</li>
-			<li aria-current={$page.url.pathname.startsWith('/strategy-consulting') ? 'page' : undefined}>
-				<a href="/strategy-consulting">Strategy Consulting</a>
-			</li>
 			<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
 				<a href="/about">About</a>
 			</li>
-
-			<li aria-current={$page.url.pathname.startsWith('/contact') ? 'page' : undefined}>
-				<a href="/contact">Contact</a>
+			<li aria-current={$page.url.pathname.startsWith('/sverdle') ? 'page' : undefined}>
+				<a href="/sverdle">Sverdle</a>
 			</li>
 		</ul>
-
 		<svg viewBox="0 0 2 3" aria-hidden="true">
 			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
 		</svg>
 	</nav>
 
-	<div class="corner"></div>
+	<div class="corner">
+		<a href="https://github.com/sveltejs/kit">
+			<img src={github} alt="GitHub" />
+		</a>
+	</div>
 </header>
 
 <style>
@@ -59,18 +44,12 @@
 		justify-content: space-between;
 	}
 
-	.logo-corner {
-		width: 10em;
-		height: 4em;
-		padding-left: 1em;
-		margin-right: -1em;
-	}
 	.corner {
 		width: 3em;
-		height: em;
+		height: 3em;
 	}
-	.corner a,
-	.logo-corner a {
+
+	.corner a {
 		display: flex;
 		align-items: center;
 		justify-content: center;
