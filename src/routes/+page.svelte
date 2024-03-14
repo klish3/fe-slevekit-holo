@@ -2,6 +2,7 @@
 	import Counter from './Counter.svelte';
 	import welcome from '$lib/images/svelte-welcome.webp';
 	import welcome_fallback from '$lib/images/svelte-welcome.png';
+	import { Alert } from 'flowbite-svelte';
 </script>
 
 <svelte:head>
@@ -10,6 +11,12 @@
 </svelte:head>
 
 <section>
+	<div class="p-8">
+		<Alert>
+			<span class="font-medium">Info alert!</span>
+			Change a few things up and try submitting again.
+		</Alert>
+	</div>
 	<div class="col-lg-12 section-title text-center fadeIn wow">
 		<h2 class="uppercase"><strong>VALUE</strong>PROPOSITION</h2>
 		<div class="title-bar dark-bg"></div>
