@@ -1,150 +1,37 @@
 <script>
-	import { page } from '$app/stores';
-	import logo from '$lib/images/svelte-logo.svg';
-	import github from '$lib/images/github.svg';
-	import holonLogo from '$lib/images/logo.png';
+	// @ts-nocheck
+
+	import { Navbar, NavBrand, NavHamburger, NavUl, NavLi, Button } from 'flowbite-svelte';
+
+	let navClass = 'bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800';
+	let navDivClass = 'flex flex-wrap justify-between items-center mx-auto max-w-screen-xl';
 </script>
 
 <header>
-	<div class="logo-corner">
-		<a href="https://kit.svelte.dev">
-			<img src={holonLogo} alt="SvelteKit" />
-		</a>
-	</div>
+	<Navbar let:hidden let:toggle fluid={false} {navClass} {navDivClass}>
+		<NavBrand href="/">
+			<img src="./src/lib/images/logo.png" class="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
+		</NavBrand>
+		<div class="flex items-center lg:order-2">
+			<!-- <Button href="/" color="dark">Log in</Button> -->
+			<Button href="/" class="ml-2" color="red">Get started</Button>
+			<NavHamburger
+				on:click={toggle}
+				btnClass="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+			/>
+		</div>
+		<NavUl
+			{hidden}
+			divClass="justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
+			ulClass="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0"
+		>
+			<NavLi href="/business-analysis">Business Analysis</NavLi>
+			<NavLi href="/business-process-management">Business Process Management</NavLi>
+			<NavLi href="/executive-coaching">Executive Coaching</NavLi>
+			<NavLi href="/strategy-consulting">Strategy Consulting</NavLi>
+			<NavLi href="/about">About</NavLi>
 
-	<nav>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
-		</svg>
-		<ul>
-			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
-				<a href="/">Home</a>
-			</li>
-			<li aria-current={$page.url.pathname.startsWith('/business-analysis') ? 'page' : undefined}>
-				<a href="/business-analysis">Business Analysis</a>
-			</li>
-			<li
-				aria-current={$page.url.pathname.startsWith('/business-process-management')
-					? 'page'
-					: undefined}
-			>
-				<a href="/business-process-management">Business Process Management</a>
-			</li>
-			<li aria-current={$page.url.pathname.startsWith('/executive-coaching') ? 'page' : undefined}>
-				<a href="/executive-coaching">Executive Coaching</a>
-			</li>
-			<li aria-current={$page.url.pathname.startsWith('/strategy-consulting') ? 'page' : undefined}>
-				<a href="/strategy-consulting">Strategy Consulting</a>
-			</li>
-			<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
-				<a href="/about">About</a>
-			</li>
-
-			<li aria-current={$page.url.pathname.startsWith('/contact') ? 'page' : undefined}>
-				<a href="/contact">Contact</a>
-			</li>
-		</ul>
-
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
-		</svg>
-	</nav>
-
-	<div class="corner"></div>
+			<NavLi href="/contact">Contact</NavLi>
+		</NavUl>
+	</Navbar>
 </header>
-
-<style>
-	header {
-		display: flex;
-		justify-content: space-between;
-	}
-
-	.logo-corner {
-		width: 10em;
-		height: 4em;
-		padding-left: 1em;
-		margin-right: -1em;
-	}
-	.corner {
-		width: 3em;
-		height: em;
-	}
-	.corner a,
-	.logo-corner a {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		height: 100%;
-	}
-
-	.corner img {
-		width: 2em;
-		height: 2em;
-		object-fit: contain;
-	}
-
-	nav {
-		display: flex;
-		justify-content: center;
-		--background: rgba(255, 255, 255, 0.7);
-	}
-
-	svg {
-		width: 2em;
-		height: 3em;
-		display: block;
-	}
-
-	path {
-		fill: var(--background);
-	}
-
-	ul {
-		position: relative;
-		padding: 0;
-		margin: 0;
-		height: 3em;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		list-style: none;
-		background: var(--background);
-		background-size: contain;
-	}
-
-	li {
-		position: relative;
-		height: 100%;
-	}
-
-	li[aria-current='page']::before {
-		--size: 6px;
-		content: '';
-		width: 0;
-		height: 0;
-		position: absolute;
-		top: 0;
-		left: calc(50% - var(--size));
-		border: var(--size) solid transparent;
-		border-top: var(--size) solid var(--color-theme-1);
-	}
-
-	nav a {
-		display: flex;
-		height: 100%;
-		align-items: center;
-		padding: 0 0.5rem;
-		color: var(--color-text);
-		font-weight: 700;
-		font-size: 0.8rem;
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
-		text-decoration: none;
-		transition: color 0.2s linear;
-	}
-
-	a:hover {
-		color: var(--color-theme-1);
-	}
-</style>

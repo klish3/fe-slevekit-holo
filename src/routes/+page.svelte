@@ -2,7 +2,9 @@
 	import Counter from './Counter.svelte';
 	import welcome from '$lib/images/svelte-welcome.webp';
 	import welcome_fallback from '$lib/images/svelte-welcome.png';
-	import { Alert } from 'flowbite-svelte';
+	import { Section, News, HeroHeader, HeroBody } from 'flowbite-svelte-blocks';
+	import { Alert, Button } from 'flowbite-svelte';
+	import { ArrowRightOutline } from 'flowbite-svelte-icons';
 </script>
 
 <svelte:head>
@@ -10,17 +12,14 @@
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<section>
-	<div class="p-8">
-		<Alert>
-			<span class="font-medium">Info alert!</span>
-			Change a few things up and try submitting again.
-		</Alert>
-	</div>
-	<div class="col-lg-12 section-title text-center fadeIn wow">
-		<h2 class="uppercase"><strong>VALUE</strong>PROPOSITION</h2>
+<section
+	class="bg-[url('https://firebasestorage.googleapis.com/v0/b/holonconsulting-9064d.appspot.com/o/main_bg.jpg?alt=media&token=4f37d5c1-342f-4887-9998-93c413fe8c49')] bg-cover bg-no-repeat bg-blend-multiply"
+>
+	<div class="col-lg-12 section-title fadeIn wow">
+		<div class="uppercase"><strong></strong></div>
+
 		<div class="title-bar dark-bg"></div>
-		<h3 class=" uppercase">Value Delivered:</h3>
+		<h1 class=" uppercase">Value Delivered:</h1>
 		<div class="textcenter info-text">
 			<ul>
 				<li style="font-size:18px;">31% reduction in operational costs for a mid-size bank</li>
@@ -34,7 +33,7 @@
 		</div>
 	</div>
 
-	<Counter />
+	<!-- <Counter /> -->
 	<div class="homepage_cirlce_wchdfy">What can <br /> Holon Consulting <br /> do for you?</div>
 	<div class="row section1">
 		<div class="main_circle_section">
@@ -54,19 +53,23 @@
 	</div>
 </section>
 
+<!--  -->
+
 <style>
 	section {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		flex: 0.6;
+		flex: 1;
 	}
 
 	h1 {
 		width: 100%;
 	}
-
+	.home {
+		background-image: 'https://firebasestorage.googleapis.com/v0/b/holonconsulting-9064d.appspot.com/o/main_bg.jpg';
+	}
 	.welcome {
 		display: block;
 		position: relative;
@@ -114,7 +117,7 @@
 		width: 200px;
 		border-radius: 200px;
 		background-color: #fff;
-		float: left;
+
 		margin: 20px 40px;
 	}
 	.homepage_cirlce:hover {
@@ -131,9 +134,13 @@
 		font-size: 1.5em;
 	}
 	.main_circle_section {
-		display: block;
+		position: absolute;
+		display: flex;
+		flex-direction: row;
 		width: 100%;
-
+		bottom: 0%;
+		left: 0;
+		right: 0;
 		height: 300px;
 		background-color: #fff;
 	}
